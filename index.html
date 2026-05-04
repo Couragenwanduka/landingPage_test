@@ -4,323 +4,640 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <!-- SEO TITLE (IMPORTANT) -->
   <title>Increasy – AI Productivity Platform for Modern Teams</title>
-
-  <!-- SEO DESCRIPTION -->
   <meta name="description" content="Increasy helps teams work smarter with AI-powered productivity tools, automation, and seamless collaboration.">
-
-  <!-- KEYWORDS (lightweight but still useful) -->
   <meta name="keywords" content="productivity tool, AI workflow, team collaboration, task automation, SaaS platform">
-
-  <!-- AUTHOR -->
   <meta name="author" content="Increasy">
-
-  <!-- OPEN GRAPH (SOCIAL PREVIEWS) -->
   <meta property="og:title" content="Increasy – AI Productivity Platform">
   <meta property="og:description" content="Boost team productivity with automation, collaboration, and AI-powered workflows.">
   <meta property="og:type" content="website">
-
-  <!-- TWITTER CARD -->
   <meta name="twitter:card" content="summary_large_image">
-
-  <!-- THEME COLOR -->
   <meta name="theme-color" content="#3384ff">
 
-  <!-- TAILWIND -->
+  <!-- Analytics placeholder -->
+  <!-- <script async src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID"></script> -->
+
   <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="stylesheet" href="./index.css">
+
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+
+    * { box-sizing: border-box; }
+
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background-color: #f7f8fa;
+      overflow-x: hidden;
+    }
+
+    /* Scrollbar */
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: #f7f8fa; }
+    ::-webkit-scrollbar-thumb { background: #3384ff; border-radius: 3px; }
+
+    /* Nav scroll effect */
+    .nav-scrolled {
+      box-shadow: 0 4px 30px rgba(0,0,0,0.15);
+    }
+
+    /* Mobile menu */
+    #mobile-menu {
+      transition: all 0.3s ease;
+    }
+
+    /* Hero badge */
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      padding: 8px 16px;
+      background: white;
+      border-radius: 20px;
+      font-size: 14px;
+      font-weight: 500;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    }
+
+    /* Benefit card hover */
+    .benefit-card {
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    .benefit-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 30px rgba(51,132,255,0.12);
+    }
+
+    /* Step image */
+    .step-image {
+      border-radius: 20px;
+      background: #eaeff4;
+    }
+
+    /* Testimonial scroll */
+    .testimonial-track {
+      display: flex;
+      gap: 16px;
+      animation: scroll-left 30s linear infinite;
+      width: max-content;
+    }
+    .testimonial-track-reverse {
+      animation: scroll-right 35s linear infinite;
+    }
+    @keyframes scroll-left {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+    @keyframes scroll-right {
+      0% { transform: translateX(-50%); }
+      100% { transform: translateX(0); }
+    }
+    .testimonial-wrapper {
+      overflow: hidden;
+      width: 100%;
+    }
+    .testimonial-wrapper:hover .testimonial-track {
+      animation-play-state: paused;
+    }
+
+    /* Testimonial card */
+    .t-card {
+      min-width: 280px;
+      max-width: 280px;
+      background: white;
+      border-radius: 16px;
+      padding: 20px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    }
+
+    /* CTA section */
+    .cta-section {
+      background: linear-gradient(135deg, #eaeff4 0%, #dde8f5 100%);
+    }
+
+    /* Button hover */
+    .btn-primary {
+      transition: background 0.2s ease, transform 0.1s ease;
+    }
+    .btn-primary:hover {
+      background: #2270e8;
+      transform: scale(1.02);
+    }
+    .btn-primary:active {
+      transform: scale(0.98);
+    }
+
+    /* Fade in on scroll */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.5s ease, transform 0.5s ease;
+    }
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Hero text responsive */
+    @media (max-width: 640px) {
+      .hero-title { font-size: 42px !important; line-height: 1.1; }
+      .hero-sub { font-size: 15px !important; width: 100% !important; }
+    }
+    @media (min-width: 641px) and (max-width: 1024px) {
+      .hero-title { font-size: 60px !important; }
+    }
+
+    /* Step alternating layout */
+    @media (max-width: 768px) {
+      .step-row { flex-direction: column !important; }
+      .step-row-reverse { flex-direction: column !important; }
+    }
+  </style>
 </head>
 
-<body class="bg-[#f7f8fa] font-satoshi">
+<body>
 
- <main>
-     <!-- Navigation Bar -->
- <header class="flex justify-center w-full mt-6 px-4">
-  <nav class="bg-[#2D2D2D] flex flex-col md:flex-row justify-between items-center w-full md:w-[90%] lg:w-[60%] rounded-2xl p-4 gap-4 md:gap-0">
+  <!-- ===== NAVIGATION ===== -->
+  <header class="flex justify-center w-full mt-4 sm:mt-6 px-4 sticky top-4 z-50">
+    <nav id="main-nav" class="bg-[#2D2D2D] flex flex-row justify-between items-center w-full md:w-[90%] lg:w-[65%] rounded-2xl px-4 sm:px-6 py-3 sm:py-4 transition-all duration-300">
 
-    <!-- Logo -->
-    <img src="/image/Logo Container.svg" alt="Logo" class="h-8 md:h-auto">
-
-    <!-- Nav Links -->
-    <ul class="flex flex-col md:flex-row items-center gap-4 md:gap-8 text-white font-medium text-sm md:text-base">
-      <li><a href="" class="hover:text-gray-300">Benefit</a></li>
-      <li><a href="" class="hover:text-gray-300">How it works</a></li>
-      <li><a href="" class="hover:text-gray-300">Testimonials</a></li>
-    </ul>
-
-    <!-- CTA Button -->
-    <button class="bg-[#3384ff] py-2 md:py-[10px] px-4 md:px-[14px] rounded-xl text-white text-sm md:text-base w-full md:w-auto">
-      Take the first step
-    </button>
-
-  </nav>
-</header>
-
-  <!-- Hero Section -->
-  <section class="mt-[100px] relative">
-    <div class="relative">
-      <img
-        src="/image/Testimonial Card (2).png"
-        alt="testimonial"
-        class="right-0 absolute top[50%] translate-y-[-50%]"
-      >
-
-      <div class="flex justify-between pt-[90px]">
-        <img
-          src="/image/Testimonial Card.png"
-          alt="testimonial"
-          class="w-64 object-contain"
-        >
-
-        <img
-          src="/image/Testimonial Card (1).png"
-          alt="testimonial"
-          class="w-56 object-contain"
-        >
+      <!-- Logo -->
+      <div class="flex items-center gap-2">
+        <div class="w-8 h-8 bg-[#3384ff] rounded-lg flex items-center justify-center">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+            <path d="M2 8L6 12L14 4" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <span class="text-white font-bold text-lg">Increasy</span>
       </div>
+
+      <!-- Desktop Nav Links -->
+      <ul class="hidden md:flex items-center gap-8 text-white font-medium text-sm">
+        <li><a href="#benefits" class="hover:text-[#3384ff] transition-colors">Benefits</a></li>
+        <li><a href="#how-it-works" class="hover:text-[#3384ff] transition-colors">How it works</a></li>
+        <li><a href="#testimonials" class="hover:text-[#3384ff] transition-colors">Testimonials</a></li>
+      </ul>
+
+      <!-- Desktop CTA -->
+      <button class="btn-primary hidden md:block bg-[#3384ff] py-2.5 px-5 rounded-xl text-white text-sm font-medium">
+        Take the first step
+      </button>
+
+      <!-- Mobile Hamburger -->
+      <button id="hamburger" class="md:hidden text-white p-1" aria-label="Toggle menu">
+        <svg id="hamburger-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+          <line x1="3" y1="6" x2="21" y2="6"/>
+          <line x1="3" y1="12" x2="21" y2="12"/>
+          <line x1="3" y1="18" x2="21" y2="18"/>
+        </svg>
+      </button>
+    </nav>
+
+    <!-- Mobile Dropdown -->
+    <div id="mobile-menu" class="hidden absolute top-[72px] left-4 right-4 bg-[#2D2D2D] rounded-2xl p-6 z-40">
+      <ul class="flex flex-col gap-4 text-white font-medium mb-5">
+        <li><a href="#benefits" class="hover:text-[#3384ff] transition-colors" onclick="closeMobileMenu()">Benefits</a></li>
+        <li><a href="#how-it-works" class="hover:text-[#3384ff] transition-colors" onclick="closeMobileMenu()">How it works</a></li>
+        <li><a href="#testimonials" class="hover:text-[#3384ff] transition-colors" onclick="closeMobileMenu()">Testimonials</a></li>
+      </ul>
+      <button class="btn-primary w-full bg-[#3384ff] py-3 rounded-xl text-white font-medium">
+        Take the first step
+      </button>
     </div>
+  </header>
 
-    <div class="absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] w-[80%] h-full flex flex-col justify-between items-center">
-      <div class="px-[10px] py-[10px] bg-white rounded-[20px] text-[18px]">
-        <p>#1 Productivity Software</p>
-      </div>
+  <main>
 
-      <div class="text-center flex flex-col justify-center items-center">
-        <p class="font-bold text-[90px] break-words w-[95%] text-center">
-          Supercharge
-          <strong class="text-[#3384ff]">Your Team's</strong>
-          Productivity
-        </p>
-
-        <p class="text-[18px] text-[#949595] break-words w-[50%] text-center">
-          Increasy helps you work smarter, collaborate seamlessly, and stay ahead.
-          Say goodbye to busy work and focus on what matters.
-        </p>
-      </div>
-
-      <div class="mt-[20px] flex flex-col justify-center items-center">
-        <button class="bg-[#3384ff] px-[25px] py-[16px] rounded-[16px] text-white font-medium">
-          Try for 14 days free
-        </button>
-
-        <p class="text-[14px] text-[#949595] mt-[10px]">
-          No credit card required
-        </p>
-
-        <span class="mt-5 flex text-sm text-[#949595] gap-3 items-center">
-          <img src="image/icon/Stars Container.svg" alt="Stars">
-          1k+ rating on Product Hunt
+    <!-- ===== HERO SECTION ===== -->
+    <section class="mt-16 sm:mt-20 px-4 text-center fade-in">
+      <div class="flex justify-center mb-6">
+        <span class="badge">
+          <span class="w-2 h-2 bg-green-400 rounded-full mr-2 animate-pulse"></span>
+          #1 Productivity Software
         </span>
       </div>
-    </div>
-  </section>
 
-  <!-- Video Section -->
-  <section class="flex flex-col justify-center item-center wfull mt-[100px] object-contain w-[74%] mx-auto">
-    <img src="/image/Video Section.png" alt="Video">
-    <img src="image/icon/Clients Section.png" alt="Clients" class="mt-[50px]">
-  </section>
+      <h1 class="hero-title font-bold text-[72px] leading-[1.05] text-[#1a1a1a] max-w-4xl mx-auto">
+        Supercharge
+        <span class="text-[#3384ff]"> Your Team's</span>
+        Productivity
+      </h1>
 
-  <!-- Why choose us -->
-  <section class="mt-[100px] flex flex-col justify-center items-center ">
-        <div class="px-[10px] py-[10px] bg-white rounded-[20px] text-[18px]">
-            <p>Why Choose Increasy?</p>
-        </div>
-        <p class="font-bold text-[55px] break-words w-[95%] text-center">Key <strong class="text-[#3384ff]">Benefits </strong> Using Increasy</p>
-        <p class="text-[18px] text-[#949595] break-words w-[30%] text-center">Our platform tackles your biggest challenges. Discover why Increasy is essential for modern teams.</p>
+      <p class="hero-sub text-[17px] text-[#949595] max-w-lg mx-auto mt-5 leading-relaxed">
+        Increasy helps you work smarter, collaborate seamlessly, and stay ahead.
+        Say goodbye to busy work and focus on what matters.
+      </p>
 
-        <div class="flex gap-3 mt-2 px-[80px] mt-9">
-              <div class="p-3">
-                     <div class="w-full flex justify-center items-center bg-[#EAEFF4] rounded-t-[20px] h-[200px]">
-                         <img src="image/icon/Icon Container.svg" alt="Icon">
-                     </div>
-                     <div class="p-3">
-                        <p class="text-[20px] font-bold ">Automate Repetitive Tasks</p>
-                        <p class="text-[14px] text-[#949595]">Save time with automation tools that handle routine tasks for you - focus on growth.</p>
-                     </div>
-              </div>
-              <div class="p-3">
-                     <div class="w-full flex justify-center items-center bg-[#EAEFF4] rounded-t-[20px] h-[200px]">
-                         <img src="image/icon/Icon Container (1).svg" alt="Icon">
-                     </div>
-                     <div class="p-3">
-                        <p class="text-[20px] font-bold ">Boost Collaboration</p>
-                        <p class="text-[14px] text-[#949595]">Get everyone on the same page with real-time updates, comments, and shared project boards.</p>
-                     </div>
-              </div>
-              <div class="p-3">
-                     <div class="w-full flex justify-center items-center bg-[#EAEFF4] rounded-t-[20px] h-[200px]"   >
-                         <img src="image/icon/Icon Container (2).svg" alt="Icon">
-                     </div>
-                     <div class="p-3">
-                        <p class="text-[20px] font-bold ">Track Progress</p>
-                        <p class="text-[14px] text-[#949595]">Stay on top of your goals with detailed analytics and custom reports, updated live.</p>
-                     </div>
-              </div>
-        </div>
-  </section>
-
-  <!-- Get Started in Minutes -->
-   <section class="mt-[100px] flex flex-col justify-center items-center ">
-     <div class="px-[10px] py-[10px] bg-white rounded-[20px] text-[18px]">
-            <p>Get Started in Minutes</p>
-        </div>
-        <p class="font-bold text-[55px] break-words w-[95%] text-center">How Increasy  <strong class="text-[#3384ff]">Works </strong></p>
-        <p class="text-[18px] text-[#949595] break-words w-[30%] text-center">
-From setup to success in three simple steps. Here’s how you can start maximizing productivity right away.
-</p>
-
-
-<div class="mt-[100px] flex gap-5 item-center h-full justify-center">
-     <img src="/image/Group 427320603.png" alt="Image">
-      <div class="flex flex-col justify-center items-start gap-1">
-         <div class="px-[10px] py-[6px] bg-white rounded-[20px] text-[18px]">
-            <p>Step 1</p>
-        </div>
-        <p class="text-[48px] font-bold">Sign Up & Set Up</p>
-        <p class="text-[14px] text-[#949595] break-words w-[100%] text-center">Create an account and invite your team members in under 5 minutes.</p>
-        <button class="bg-[#3384ff] py-[10px] rounded-xl text-white px-[14px]">
-            Take the first step
+      <div class="flex flex-col items-center gap-3 mt-8">
+        <button class="btn-primary bg-[#3384ff] px-7 py-4 rounded-2xl text-white font-semibold text-base">
+          Try for 14 days free
         </button>
-      </div>
-</div>
-<div class="mt-[100px] flex gap-5 item-center h-full justify-center">
-    <div class="flex flex-col justify-center items-start gap-1">
-         <div class="px-[10px] py-[6px] bg-white rounded-[20px] text-[18px]">
-            <p>Step 2</p>
+        <p class="text-sm text-[#949595]">No credit card required</p>
+        <div class="flex items-center gap-2 text-sm text-[#949595] mt-1">
+          <div class="flex">
+            <span class="text-yellow-400">★★★★★</span>
+          </div>
+          <span>1k+ rating on Product Hunt</span>
         </div>
-        <p class="text-[48px] font-bold">Integrate & Automate</p>
-        <p class="text-[14px] text-[#949595] break-words w-[100%] text-center">Link your favorite tools and automate everyday tasks with a few clicks.</p>
-        <button class="bg-[#3384ff] py-[10px] rounded-xl text-white px-[14px]">
-            Take the first step
-        </button>
       </div>
-     <img src="/image/Group 427320602.png" alt="Image">
-      
-</div>
-<div class="mt-[100px] flex gap-5 item-center h-full justify-center">
-     <img src="/image/Group 427320601.png" alt="Image">
-      <div class="flex flex-col justify-center items-start gap-1">
-         <div class="px-[10px] py-[6px] bg-white rounded-[20px] text-[18px]">
-            <p>Step 3</p>
+
+      <!-- Testimonial floating cards — hidden on mobile, visible md+ -->
+      <div class="hidden lg:block relative mt-12 max-w-5xl mx-auto h-64">
+        <!-- Left card -->
+        <div class="absolute left-0 top-4 bg-white rounded-2xl p-4 shadow-lg w-56 text-left">
+          <div class="flex items-center gap-2 mb-2">
+            <div class="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center text-sm font-bold text-blue-600">S</div>
+            <div>
+              <p class="text-xs font-semibold">Sarah K.</p>
+              <p class="text-xs text-gray-400">Product Manager</p>
+            </div>
+          </div>
+          <p class="text-xs text-gray-600">"Increasy saved us 10 hrs/week. Team syncs are now a breeze."</p>
+          <div class="flex mt-2 text-yellow-400 text-xs">★★★★★</div>
         </div>
-        <p class="text-[48px] font-bold">Track & Optimize</p>
-        <p class="text-[14px] text-[#949595] break-words w-[100%] text-center">Monitor your performance and make data-driven decisions to improve your results.</p>
-        <button class="bg-[#3384ff] py-[10px] rounded-xl text-white px-[14px]">
-            Take the first step
-        </button>
+
+        <!-- Right card -->
+        <div class="absolute right-0 top-8 bg-white rounded-2xl p-4 shadow-lg w-56 text-left">
+          <div class="flex items-center gap-2 mb-2">
+            <div class="w-8 h-8 rounded-full bg-purple-100 flex items-center justify-center text-sm font-bold text-purple-600">M</div>
+            <div>
+              <p class="text-xs font-semibold">Marcus T.</p>
+              <p class="text-xs text-gray-400">Startup Founder</p>
+            </div>
+          </div>
+          <p class="text-xs text-gray-600">"Finally a tool that actually reduces meetings and not just records them."</p>
+          <div class="flex mt-2 text-yellow-400 text-xs">★★★★★</div>
+        </div>
+
+        <!-- Center mock dashboard -->
+        <div class="mx-auto w-[60%] bg-white rounded-2xl shadow-xl overflow-hidden border border-gray-100">
+          <div class="bg-[#2d2d2d] h-8 flex items-center px-4 gap-1.5">
+            <div class="w-3 h-3 rounded-full bg-red-400"></div>
+            <div class="w-3 h-3 rounded-full bg-yellow-400"></div>
+            <div class="w-3 h-3 rounded-full bg-green-400"></div>
+            <div class="flex-1 mx-4 bg-[#3a3a3a] rounded h-4"></div>
+          </div>
+          <div class="p-4 grid grid-cols-3 gap-3">
+            <div class="col-span-2 bg-[#f0f5ff] rounded-xl p-3">
+              <p class="text-xs font-semibold text-gray-700 mb-2">Team Progress</p>
+              <div class="space-y-2">
+                <div><div class="text-xs text-gray-500 mb-1">Design</div><div class="bg-gray-200 rounded-full h-2"><div class="bg-[#3384ff] h-2 rounded-full" style="width:80%"></div></div></div>
+                <div><div class="text-xs text-gray-500 mb-1">Development</div><div class="bg-gray-200 rounded-full h-2"><div class="bg-[#3384ff] h-2 rounded-full" style="width:60%"></div></div></div>
+                <div><div class="text-xs text-gray-500 mb-1">Marketing</div><div class="bg-gray-200 rounded-full h-2"><div class="bg-green-400 h-2 rounded-full" style="width:90%"></div></div></div>
+              </div>
+            </div>
+            <div class="bg-[#3384ff] rounded-xl p-3 flex flex-col justify-between">
+              <p class="text-xs text-white font-semibold">Tasks Done</p>
+              <p class="text-2xl font-bold text-white">87%</p>
+              <p class="text-xs text-blue-200">↑ 12% this week</p>
+            </div>
+          </div>
+        </div>
       </div>
-</div>
-
-   </section>
-
-   <!-- Trusted by Leading Teams -->
-    <section class="mt-[100px] flex flex-col justify-center items-center ">
-        <div class="px-[10px] py-[10px] bg-white rounded-[20px] text-[18px]">
-            <p>Trusted by Leading Teams</p>
-        </div>
-        <p class="font-bold text-[55px] break-words w-[95%] text-center">See What  <strong class="text-[#3384ff]">Our Users </strong>  Are Saying</p>
-        <p class="text-[18px] text-[#949595] break-words w-[30%] text-center">
-Don’t just take our word for it. Hear from teams who have transformed their productivity with Increasy.
-</p>
-<div class="mt-5"> 
-    <img src="/image/Testimonial Row (1).png" alt="image">
-    <img src="/image/Testimonial Row.png" alt="image">
-</div>
-
-
     </section>
 
+    <!-- ===== CLIENTS SECTION ===== -->
+    <section class="mt-16 sm:mt-20 px-4 fade-in">
+      <p class="text-center text-sm text-[#949595] font-medium mb-6 uppercase tracking-widest">Trusted by teams at</p>
+      <div class="flex flex-wrap justify-center items-center gap-8 sm:gap-12 opacity-40 grayscale">
+        <!-- Placeholder brand logos as text -->
+        <span class="text-xl font-bold text-gray-600">Notion</span>
+        <span class="text-xl font-bold text-gray-600">Stripe</span>
+        <span class="text-xl font-bold text-gray-600">Figma</span>
+        <span class="text-xl font-bold text-gray-600">Linear</span>
+        <span class="text-xl font-bold text-gray-600">Vercel</span>
+      </div>
+    </section>
 
-    <!-- Take the First Step Toward Efficiency -->
-     <section class="mt-[100px] flex flex-col justify-center items-center gap-4 bg-[#eaeff4] h-[20.75rem] mx-[100px] rounded-[20px] border-white border-[1px]">
-         <div class="px-[10px] py-[10px] bg-white rounded-[20px] text-[18px] mt-10">
-            <p>Take the First Step Toward Efficiency</p>
+    <!-- ===== BENEFITS SECTION ===== -->
+    <section id="benefits" class="mt-20 sm:mt-28 px-4 flex flex-col items-center fade-in">
+      <span class="badge mb-4">Why Choose Increasy?</span>
+      <h2 class="font-bold text-4xl sm:text-5xl text-center text-[#1a1a1a] max-w-2xl leading-tight">
+        Key <span class="text-[#3384ff]">Benefits</span> of Using Increasy
+      </h2>
+      <p class="text-[#949595] text-base sm:text-lg text-center max-w-md mt-4 leading-relaxed">
+        Our platform tackles your biggest challenges. Discover why Increasy is essential for modern teams.
+      </p>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 mt-12 w-full max-w-5xl">
+
+        <!-- Card 1 -->
+        <div class="benefit-card bg-white rounded-2xl overflow-hidden">
+          <div class="bg-[#EAEFF4] flex justify-center items-center h-44 p-6">
+            <div class="w-16 h-16 bg-[#3384ff] rounded-2xl flex items-center justify-center">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/>
+              </svg>
+            </div>
+          </div>
+          <div class="p-5">
+            <p class="text-lg font-bold text-[#1a1a1a]">Automate Repetitive Tasks</p>
+            <p class="text-sm text-[#949595] mt-2 leading-relaxed">Save time with automation tools that handle routine tasks for you — focus on growth.</p>
+          </div>
         </div>
-        <p class="text-[30px] font-bold text-black text-center">
-          Ready to Boost Your Productivity?
+
+        <!-- Card 2 -->
+        <div class="benefit-card bg-white rounded-2xl overflow-hidden">
+          <div class="bg-[#EAEFF4] flex justify-center items-center h-44 p-6">
+            <div class="w-16 h-16 bg-[#3384ff] rounded-2xl flex items-center justify-center">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+              </svg>
+            </div>
+          </div>
+          <div class="p-5">
+            <p class="text-lg font-bold text-[#1a1a1a]">Boost Collaboration</p>
+            <p class="text-sm text-[#949595] mt-2 leading-relaxed">Get everyone on the same page with real-time updates, comments, and shared project boards.</p>
+          </div>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="benefit-card bg-white rounded-2xl overflow-hidden sm:col-span-2 lg:col-span-1">
+          <div class="bg-[#EAEFF4] flex justify-center items-center h-44 p-6">
+            <div class="w-16 h-16 bg-[#3384ff] rounded-2xl flex items-center justify-center">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/>
+              </svg>
+            </div>
+          </div>
+          <div class="p-5">
+            <p class="text-lg font-bold text-[#1a1a1a]">Track Progress</p>
+            <p class="text-sm text-[#949595] mt-2 leading-relaxed">Stay on top of your goals with detailed analytics and custom reports, updated live.</p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ===== HOW IT WORKS ===== -->
+    <section id="how-it-works" class="mt-20 sm:mt-28 px-4 flex flex-col items-center fade-in">
+      <span class="badge mb-4">Get Started in Minutes</span>
+      <h2 class="font-bold text-4xl sm:text-5xl text-center text-[#1a1a1a] max-w-2xl leading-tight">
+        How Increasy <span class="text-[#3384ff]">Works</span>
+      </h2>
+      <p class="text-[#949595] text-base sm:text-lg text-center max-w-md mt-4 leading-relaxed">
+        From setup to success in three simple steps. Start maximizing productivity right away.
+      </p>
+
+      <!-- Step 1 -->
+      <div class="step-row flex flex-col md:flex-row items-center gap-8 sm:gap-12 mt-16 w-full max-w-4xl">
+        <div class="step-image w-full md:w-1/2 h-56 sm:h-72 flex items-center justify-center bg-[#eaeff4] rounded-2xl">
+          <div class="text-center p-6">
+            <div class="w-16 h-16 bg-[#3384ff] rounded-2xl mx-auto flex items-center justify-center mb-4">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+            </div>
+            <div class="space-y-2 w-48 mx-auto">
+              <div class="bg-white rounded-lg h-3 w-full"></div>
+              <div class="bg-white rounded-lg h-3 w-3/4 mx-auto"></div>
+              <div class="bg-[#3384ff] rounded-lg h-8 w-full mt-4 flex items-center justify-center">
+                <span class="text-white text-xs font-medium">Create Account</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="w-full md:w-1/2 text-center md:text-left">
+          <span class="badge mb-3">Step 1</span>
+          <h3 class="text-3xl sm:text-4xl font-bold text-[#1a1a1a] mt-3">Sign Up & Set Up</h3>
+          <p class="text-[#949595] mt-3 leading-relaxed">Create an account and invite your team members in under 5 minutes.</p>
+          <button class="btn-primary mt-5 bg-[#3384ff] py-3 px-6 rounded-xl text-white font-medium">
+            Take the first step
+          </button>
+        </div>
+      </div>
+
+      <!-- Step 2 -->
+      <div class="step-row-reverse flex flex-col md:flex-row-reverse items-center gap-8 sm:gap-12 mt-16 w-full max-w-4xl">
+        <div class="step-image w-full md:w-1/2 h-56 sm:h-72 flex items-center justify-center bg-[#eaeff4] rounded-2xl">
+          <div class="text-center p-6">
+            <div class="w-16 h-16 bg-[#3384ff] rounded-2xl mx-auto flex items-center justify-center mb-4">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
+            </div>
+            <div class="grid grid-cols-3 gap-2 w-48 mx-auto">
+              <div class="bg-white rounded-lg p-2 flex items-center justify-center"><span class="text-xs text-gray-500">Slack</span></div>
+              <div class="bg-white rounded-lg p-2 flex items-center justify-center"><span class="text-xs text-gray-500">Drive</span></div>
+              <div class="bg-white rounded-lg p-2 flex items-center justify-center"><span class="text-xs text-gray-500">Zoom</span></div>
+              <div class="col-span-3 bg-[#3384ff] rounded-lg h-8 flex items-center justify-center"><span class="text-white text-xs font-medium">Connect All →</span></div>
+            </div>
+          </div>
+        </div>
+        <div class="w-full md:w-1/2 text-center md:text-left">
+          <span class="badge mb-3">Step 2</span>
+          <h3 class="text-3xl sm:text-4xl font-bold text-[#1a1a1a] mt-3">Integrate & Automate</h3>
+          <p class="text-[#949595] mt-3 leading-relaxed">Link your favorite tools and automate everyday tasks with a few clicks.</p>
+          <button class="btn-primary mt-5 bg-[#3384ff] py-3 px-6 rounded-xl text-white font-medium">
+            Take the first step
+          </button>
+        </div>
+      </div>
+
+      <!-- Step 3 -->
+      <div class="step-row flex flex-col md:flex-row items-center gap-8 sm:gap-12 mt-16 w-full max-w-4xl">
+        <div class="step-image w-full md:w-1/2 h-56 sm:h-72 flex items-center justify-center bg-[#eaeff4] rounded-2xl">
+          <div class="text-center p-6">
+            <div class="w-16 h-16 bg-[#3384ff] rounded-2xl mx-auto flex items-center justify-center mb-4">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+            </div>
+            <div class="space-y-2 w-48 mx-auto">
+              <div class="flex justify-between text-xs text-gray-500 mb-1"><span>Performance</span><span class="text-green-500 font-medium">↑ 24%</span></div>
+              <div class="bg-gray-200 rounded-full h-2"><div class="bg-[#3384ff] h-2 rounded-full" style="width:87%"></div></div>
+              <div class="flex justify-between text-xs text-gray-500 mb-1 mt-2"><span>Efficiency</span><span class="text-green-500 font-medium">↑ 18%</span></div>
+              <div class="bg-gray-200 rounded-full h-2"><div class="bg-green-400 h-2 rounded-full" style="width:72%"></div></div>
+            </div>
+          </div>
+        </div>
+        <div class="w-full md:w-1/2 text-center md:text-left">
+          <span class="badge mb-3">Step 3</span>
+          <h3 class="text-3xl sm:text-4xl font-bold text-[#1a1a1a] mt-3">Track & Optimize</h3>
+          <p class="text-[#949595] mt-3 leading-relaxed">Monitor your performance and make data-driven decisions to improve your results.</p>
+          <button class="btn-primary mt-5 bg-[#3384ff] py-3 px-6 rounded-xl text-white font-medium">
+            Take the first step
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== TESTIMONIALS ===== -->
+    <section id="testimonials" class="mt-20 sm:mt-28 flex flex-col items-center fade-in overflow-hidden">
+      <div class="px-4 text-center">
+        <span class="badge mb-4">Trusted by Leading Teams</span>
+        <h2 class="font-bold text-4xl sm:text-5xl text-center text-[#1a1a1a] max-w-2xl leading-tight mx-auto">
+          See What <span class="text-[#3384ff]">Our Users</span> Are Saying
+        </h2>
+        <p class="text-[#949595] text-base sm:text-lg text-center max-w-md mx-auto mt-4 leading-relaxed">
+          Don't just take our word for it. Hear from teams who have transformed their productivity.
         </p>
-        <p>Sign up now and see the difference Increasy can make for your team.</p>
-         <button class="bg-[#3384ff] py-[10px] rounded-xl text-white px-[14px]">
-        Try 14 days free
-      </button>
-      <p class="text-[14px] text-[#949595] break-words w-[30%] text-center">
-        No credit card required. 
-      </p>
-     </section>
-
-
-<!-- Footer -->
-<footer class="mt-[100px] bg-[#2d2d2d] text-white rounded-[20px] mx-4 md:mx-[100px] p-10 md:p-16">
-
-  <div class="flex flex-col md:flex-row justify-between gap-10">
-
-    <!-- Left Section -->
-    <div class="md:w-[40%]">
-      <img src="/image/Logo Container.svg" alt="Logo" class="mb-4">
-
-      <p class="text-sm text-gray-300 leading-relaxed w-full md:w-[80%]">
-        Follow us and never miss an update on the latest productivity trends, tools, and insights.
-      </p>
-    </div>
-
-    <!-- Links Section -->
-    <div class="grid grid-cols-2 md:grid-cols-3 gap-8 text-sm">
-
-      <div>
-        <p class="font-semibold mb-3">Menu</p>
-        <ul class="space-y-2 text-gray-300">
-          <li><a href="#">Benefit</a></li>
-          <li><a href="#">How it works</a></li>
-          <li><a href="#">Testimonials</a></li>
-          <li><a href="#">FAQ</a></li>
-        </ul>
       </div>
 
-      <div>
-        <p class="font-semibold mb-3">Resources</p>
-        <ul class="space-y-2 text-gray-300">
-          <li><a href="#">Blog</a></li>
-        </ul>
+      <!-- Row 1 -->
+      <div class="testimonial-wrapper mt-10 w-full">
+        <div class="testimonial-track">
+          <!-- Duplicate set for infinite scroll effect -->
+          <div class="t-card"><div class="flex items-center gap-2 mb-3"><div class="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center font-bold text-blue-600 text-sm">A</div><div><p class="text-sm font-semibold">Alex R.</p><p class="text-xs text-gray-400">Engineering Lead</p></div></div><p class="text-sm text-gray-600">"We cut our standup time by 40%. Increasy replaced three tools we were paying for."</p><div class="text-yellow-400 text-xs mt-3">★★★★★</div></div>
+          <div class="t-card"><div class="flex items-center gap-2 mb-3"><div class="w-8 h-8 rounded-full bg-pink-100 flex items-center justify-center font-bold text-pink-600 text-sm">J</div><div><p class="text-sm font-semibold">Jamie L.</p><p class="text-xs text-gray-400">Designer</p></div></div><p class="text-sm text-gray-600">"The UI is so clean. Our whole team was onboarded in a day. No training needed."</p><div class="text-yellow-400 text-xs mt-3">★★★★★</div></div>
+          <div class="t-card"><div class="flex items-center gap-2 mb-3"><div class="w-8 h-8 rounded-full bg-green-100 flex items-center justify-center font-bold text-green-600 text-sm">P</div><div><p class="text-sm font-semibold">Priya M.</p><p class="text-xs text-gray-400">COO</p></div></div><p class="text-sm text-gray-600">"Real-time dashboards changed how we report to leadership. 10/10 recommend."</p><div class="text-yellow-400 text-xs mt-3">★★★★★</div></div>
+          <div class="t-card"><div class="flex items-center gap-2 mb-3"><div class="w-8 h-8 rounded-full bg-yellow-100 flex items-center justify-center font-bold text-yellow-600 text-sm">T</div><div><p class="text-sm font-semibold">Tom B.</p><p class="text-xs text-gray-400">Freelancer</p></div></div><p class="text-sm text-gray-600">"As a solo freelancer, Increasy makes me look like a whole agency. Clients love it."</p><div class="text-yellow-400 text-xs mt-3">★★★★★</div></div>
+          <div class="t-card"><div class="flex items-center gap-2 mb-3"><div class="w-8 h-8 rounded-full bg-purple-100 flex items-center justify-center font-bold text-purple-600 text-sm">R</div><div><p class="text-sm font-semibold">Rachel K.</p><p class="text-xs text-gray-400">Product Manager</p></div></div><p class="text-sm text-gray-600">"Finally got our remote team aligned. The automation saves us hours every week."</p><div class="text-yellow-400 text-xs mt-3">★★★★★</div></div>
+          <!-- Duplicate for seamless loop -->
+          <div class="t-card"><div class="flex items-center gap-2 mb-3"><div class="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center font-bold text-blue-600 text-sm">A</div><div><p class="text-sm font-semibold">Alex R.</p><p class="text-xs text-gray-400">Engineering Lead</p></div></div><p class="text-sm text-gray-600">"We cut our standup time by 40%. Increasy replaced three tools we were paying for."</p><div class="text-yellow-400 text-xs mt-3">★★★★★</div></div>
+          <div class="t-card"><div class="flex items-center gap-2 mb-3"><div class="w-8 h-8 rounded-full bg-pink-100 flex items-center justify-center font-bold text-pink-600 text-sm">J</div><div><p class="text-sm font-semibold">Jamie L.</p><p class="text-xs text-gray-400">Designer</p></div></div><p class="text-sm text-gray-600">"The UI is so clean. Our whole team was onboarded in a day. No training needed."</p><div class="text-yellow-400 text-xs mt-3">★★★★★</div></div>
+          <div class="t-card"><div class="flex items-center gap-2 mb-3"><div class="w-8 h-8 rounded-full bg-green-100 flex items-center justify-center font-bold text-green-600 text-sm">P</div><div><p class="text-sm font-semibold">Priya M.</p><p class="text-xs text-gray-400">COO</p></div></div><p class="text-sm text-gray-600">"Real-time dashboards changed how we report to leadership. 10/10 recommend."</p><div class="text-yellow-400 text-xs mt-3">★★★★★</div></div>
+          <div class="t-card"><div class="flex items-center gap-2 mb-3"><div class="w-8 h-8 rounded-full bg-yellow-100 flex items-center justify-center font-bold text-yellow-600 text-sm">T</div><div><p class="text-sm font-semibold">Tom B.</p><p class="text-xs text-gray-400">Freelancer</p></div></div><p class="text-sm text-gray-600">"As a solo freelancer, Increasy makes me look like a whole agency. Clients love it."</p><div class="text-yellow-400 text-xs mt-3">★★★★★</div></div>
+          <div class="t-card"><div class="flex items-center gap-2 mb-3"><div class="w-8 h-8 rounded-full bg-purple-100 flex items-center justify-center font-bold text-purple-600 text-sm">R</div><div><p class="text-sm font-semibold">Rachel K.</p><p class="text-xs text-gray-400">Product Manager</p></div></div><p class="text-sm text-gray-600">"Finally got our remote team aligned. The automation saves us hours every week."</p><div class="text-yellow-400 text-xs mt-3">★★★★★</div></div>
+        </div>
       </div>
 
-      <div>
-        <p class="font-semibold mb-3">Contact</p>
-        <ul class="space-y-2 text-gray-300">
-          <li><a href="#">Support</a></li>
-          <li><a href="#">Careers</a></li>
-        </ul>
+      <!-- Row 2 reverse -->
+      <div class="testimonial-wrapper mt-4 w-full">
+        <div class="testimonial-track testimonial-track-reverse">
+          <div class="t-card"><div class="flex items-center gap-2 mb-3"><div class="w-8 h-8 rounded-full bg-orange-100 flex items-center justify-center font-bold text-orange-600 text-sm">D</div><div><p class="text-sm font-semibold">David C.</p><p class="text-xs text-gray-400">Startup CEO</p></div></div><p class="text-sm text-gray-600">"Increasy gave our 3-person team the power of a 10-person ops department."</p><div class="text-yellow-400 text-xs mt-3">★★★★★</div></div>
+          <div class="t-card"><div class="flex items-center gap-2 mb-3"><div class="w-8 h-8 rounded-full bg-teal-100 flex items-center justify-center font-bold text-teal-600 text-sm">N</div><div><p class="text-sm font-semibold">Nina W.</p><p class="text-xs text-gray-400">HR Director</p></div></div><p class="text-sm text-gray-600">"Onboarding new hires is now smooth. Everything they need is in one place."</p><div class="text-yellow-400 text-xs mt-3">★★★★★</div></div>
+          <div class="t-card"><div class="flex items-center gap-2 mb-3"><div class="w-8 h-8 rounded-full bg-red-100 flex items-center justify-center font-bold text-red-600 text-sm">K</div><div><p class="text-sm font-semibold">Kevin S.</p><p class="text-xs text-gray-400">Developer</p></div></div><p class="text-sm text-gray-600">"The API integrations are solid. We built a custom workflow in an afternoon."</p><div class="text-yellow-400 text-xs mt-3">★★★★★</div></div>
+          <div class="t-card"><div class="flex items-center gap-2 mb-3"><div class="w-8 h-8 rounded-full bg-indigo-100 flex items-center justify-center font-bold text-indigo-600 text-sm">L</div><div><p class="text-sm font-semibold">Lisa H.</p><p class="text-xs text-gray-400">Marketing Lead</p></div></div><p class="text-sm text-gray-600">"Campaign planning went from chaos to clarity. Our output doubled in 2 months."</p><div class="text-yellow-400 text-xs mt-3">★★★★★</div></div>
+          <div class="t-card"><div class="flex items-center gap-2 mb-3"><div class="w-8 h-8 rounded-full bg-cyan-100 flex items-center justify-center font-bold text-cyan-600 text-sm">M</div><div><p class="text-sm font-semibold">Mike P.</p><p class="text-xs text-gray-400">Agency Owner</p></div></div><p class="text-sm text-gray-600">"Managing 20 client projects at once? Easy. Increasy handles the complexity."</p><div class="text-yellow-400 text-xs mt-3">★★★★★</div></div>
+          <!-- Duplicate -->
+          <div class="t-card"><div class="flex items-center gap-2 mb-3"><div class="w-8 h-8 rounded-full bg-orange-100 flex items-center justify-center font-bold text-orange-600 text-sm">D</div><div><p class="text-sm font-semibold">David C.</p><p class="text-xs text-gray-400">Startup CEO</p></div></div><p class="text-sm text-gray-600">"Increasy gave our 3-person team the power of a 10-person ops department."</p><div class="text-yellow-400 text-xs mt-3">★★★★★</div></div>
+          <div class="t-card"><div class="flex items-center gap-2 mb-3"><div class="w-8 h-8 rounded-full bg-teal-100 flex items-center justify-center font-bold text-teal-600 text-sm">N</div><div><p class="text-sm font-semibold">Nina W.</p><p class="text-xs text-gray-400">HR Director</p></div></div><p class="text-sm text-gray-600">"Onboarding new hires is now smooth. Everything they need is in one place."</p><div class="text-yellow-400 text-xs mt-3">★★★★★</div></div>
+          <div class="t-card"><div class="flex items-center gap-2 mb-3"><div class="w-8 h-8 rounded-full bg-red-100 flex items-center justify-center font-bold text-red-600 text-sm">K</div><div><p class="text-sm font-semibold">Kevin S.</p><p class="text-xs text-gray-400">Developer</p></div></div><p class="text-sm text-gray-600">"The API integrations are solid. We built a custom workflow in an afternoon."</p><div class="text-yellow-400 text-xs mt-3">★★★★★</div></div>
+          <div class="t-card"><div class="flex items-center gap-2 mb-3"><div class="w-8 h-8 rounded-full bg-indigo-100 flex items-center justify-center font-bold text-indigo-600 text-sm">L</div><div><p class="text-sm font-semibold">Lisa H.</p><p class="text-xs text-gray-400">Marketing Lead</p></div></div><p class="text-sm text-gray-600">"Campaign planning went from chaos to clarity. Our output doubled in 2 months."</p><div class="text-yellow-400 text-xs mt-3">★★★★★</div></div>
+          <div class="t-card"><div class="flex items-center gap-2 mb-3"><div class="w-8 h-8 rounded-full bg-cyan-100 flex items-center justify-center font-bold text-cyan-600 text-sm">M</div><div><p class="text-sm font-semibold">Mike P.</p><p class="text-xs text-gray-400">Agency Owner</p></div></div><p class="text-sm text-gray-600">"Managing 20 client projects at once? Easy. Increasy handles the complexity."</p><div class="text-yellow-400 text-xs mt-3">★★★★★</div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== CTA SECTION ===== -->
+    <section class="mt-20 sm:mt-28 mx-4 sm:mx-8 lg:mx-24 fade-in">
+      <div class="cta-section rounded-3xl border border-white p-8 sm:p-14 flex flex-col items-center text-center gap-4">
+        <span class="badge">Take the First Step Toward Efficiency</span>
+        <h2 class="text-2xl sm:text-4xl font-bold text-[#1a1a1a] max-w-lg leading-tight">
+          Ready to Boost Your Productivity?
+        </h2>
+        <p class="text-[#949595] max-w-sm">Sign up now and see the difference Increasy can make for your team.</p>
+        <button class="btn-primary bg-[#3384ff] py-3.5 px-8 rounded-xl text-white font-semibold text-base mt-2">
+          Try 14 days free
+        </button>
+        <p class="text-sm text-[#949595]">No credit card required.</p>
+      </div>
+    </section>
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="mt-16 sm:mt-20 bg-[#2d2d2d] text-white rounded-2xl mx-4 sm:mx-8 lg:mx-24 p-8 sm:p-14 mb-6">
+      <div class="flex flex-col sm:flex-row justify-between gap-10">
+
+        <!-- Left -->
+        <div class="sm:w-[40%]">
+          <div class="flex items-center gap-2 mb-4">
+            <div class="w-8 h-8 bg-[#3384ff] rounded-lg flex items-center justify-center">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                <path d="M2 8L6 12L14 4" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <span class="font-bold text-lg">Increasy</span>
+          </div>
+          <p class="text-sm text-gray-400 leading-relaxed max-w-xs">
+            Follow us and never miss an update on the latest productivity trends, tools, and insights.
+          </p>
+          <!-- Social links -->
+          <div class="flex gap-3 mt-5">
+            <a href="#" class="w-9 h-9 bg-[#3a3a3a] rounded-lg flex items-center justify-center hover:bg-[#3384ff] transition-colors">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="white"><path d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z"/></svg>
+            </a>
+            <a href="#" class="w-9 h-9 bg-[#3a3a3a] rounded-lg flex items-center justify-center hover:bg-[#3384ff] transition-colors">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="white"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2" fill="white"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- Links -->
+        <div class="grid grid-cols-3 gap-8 text-sm">
+          <div>
+            <p class="font-semibold mb-3">Menu</p>
+            <ul class="space-y-2 text-gray-400">
+              <li><a href="#benefits" class="hover:text-white transition-colors">Benefits</a></li>
+              <li><a href="#how-it-works" class="hover:text-white transition-colors">How it works</a></li>
+              <li><a href="#testimonials" class="hover:text-white transition-colors">Testimonials</a></li>
+              <li><a href="#" class="hover:text-white transition-colors">FAQ</a></li>
+            </ul>
+          </div>
+          <div>
+            <p class="font-semibold mb-3">Resources</p>
+            <ul class="space-y-2 text-gray-400">
+              <li><a href="#" class="hover:text-white transition-colors">Blog</a></li>
+              <li><a href="#" class="hover:text-white transition-colors">Docs</a></li>
+            </ul>
+          </div>
+          <div>
+            <p class="font-semibold mb-3">Contact</p>
+            <ul class="space-y-2 text-gray-400">
+              <li><a href="#" class="hover:text-white transition-colors">Support</a></li>
+              <li><a href="#" class="hover:text-white transition-colors">Careers</a></li>
+            </ul>
+          </div>
+        </div>
       </div>
 
-    </div>
+      <div class="mt-10 border-t border-gray-700 pt-6 flex flex-col sm:flex-row justify-between text-xs text-gray-500 gap-3">
+        <p>© 2026 Increasy. All rights reserved.</p>
+        <div class="flex gap-4">
+          <a href="#" class="hover:text-white transition-colors">Terms of Service</a>
+          <a href="#" class="hover:text-white transition-colors">Privacy Policy</a>
+        </div>
+      </div>
+    </footer>
 
-  </div>
+  </main>
 
-  <!-- Bottom Bar -->
-  <div class="mt-10 border-t border-gray-700 pt-6 flex flex-col md:flex-row justify-between text-xs text-gray-400 gap-4">
-    <p>© 2026 Increasy. All rights reserved.</p>
+  <script>
+    // Mobile menu toggle
+    const hamburger = document.getElementById('hamburger');
+    const mobileMenu = document.getElementById('mobile-menu');
+    let menuOpen = false;
 
-    <div class="flex gap-4">
-      <a href="#">Terms of Service</a>
-      <a href="#">Privacy Policy</a>
-    </div>
-  </div>
+    hamburger.addEventListener('click', () => {
+      menuOpen = !menuOpen;
+      mobileMenu.classList.toggle('hidden', !menuOpen);
+    });
 
-</footer>
- </main>
-
-
-  <script id="r9kd2p">
-    tailwind.config = {
-      theme: {
-        extend: {
-          fontFamily: {
-            satoshi: ['Satoshi', 'sans-serif'],
-          }
-        }
-      }
+    function closeMobileMenu() {
+      menuOpen = false;
+      mobileMenu.classList.add('hidden');
     }
+
+    // Close menu on outside click
+    document.addEventListener('click', (e) => {
+      if (!hamburger.contains(e.target) && !mobileMenu.contains(e.target)) {
+        closeMobileMenu();
+      }
+    });
+
+    // Smooth scroll for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
+
+    // Scroll fade-in
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+    // Nav shadow on scroll
+    window.addEventListener('scroll', () => {
+      const nav = document.getElementById('main-nav');
+      if (window.scrollY > 20) {
+        nav.classList.add('nav-scrolled');
+      } else {
+        nav.classList.remove('nav-scrolled');
+      }
+    });
   </script>
 
 </body>
